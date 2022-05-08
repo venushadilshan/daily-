@@ -1,27 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import dailyDataTemp from './SampleData'
+
 
 function App() {
-  var db;
-  var request = indexedDB.open("testDb", 1)
 
+  useEffect(() => {
+   console.log(JSON.stringify(dailyDataTemp))
+    if (localStorage.getItem("dailyData") === null) {
+      localStorage.setItem("dailyData",JSON.stringify(dailyDataTemp))
+    }
 
+    var temp =  localStorage.getItem("dailyData")
+    console.log(JSON.parse(temp))
 
-  request.onerror = (e) => {
-    console.log("error")
-  }
-
-  request.onsuccess = (e) => {
-  
-    db = e.target.result;
-    
-  }
-
-
-
+  }, [])
   return (
     <div >
-      
+
       <button >Add</button>
     </div>
   );
