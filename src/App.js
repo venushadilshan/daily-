@@ -2,24 +2,35 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
 import dailyDataTemp from './SampleData'
+import * as Mui from '@mui/material';
 
 
 function App() {
 
+  const [dailyData, setDailyData] = useState()
+
   useEffect(() => {
-   console.log(JSON.stringify(dailyDataTemp))
+   
     if (localStorage.getItem("dailyData") === null) {
       localStorage.setItem("dailyData",JSON.stringify(dailyDataTemp))
     }
 
-    var temp =  localStorage.getItem("dailyData")
-    console.log(JSON.parse(temp))
+    else
+    {
+      var temp =  localStorage.getItem("dailyData")
+    
+    setDailyData(JSON.parse(temp))
+    console.log(dailyData)
 
+      
+    }
+
+    
   }, [])
   return (
     <div >
 
-      <button >Add</button>
+     <Mui.Button variant="contained">Test</Mui.Button>
     </div>
   );
 }
